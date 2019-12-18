@@ -1,0 +1,75 @@
+     <meta charset="utf-8" emacsmode="-*- markdown -*-"><link rel="stylesheet" href="https://casual-effects.com/markdeep/latest/slate.css?">
+
+                        **Realistic Image Synthesis**
+                           Fall 1949
+
+
+![Figure [squid]: A picture of a squid](placeholder.jpg)
+
+Introduction
+==============================================================
+
+Ray Casting
+---------------------------------------------------------------
+![Figure [Appel]: Arthur Appel, 1968](appel.jpg width="300px" border="2")
+
+- Render the scene by shooting one ray per pixel from the eye and finding the closest object blocking the path of the ray.
+- Check for shadows by sending a ray to the light.
+- Can deal with non-planar sufaces and solids.
+- Nonrecursive, i.e., no interreflections.
+- Movie: [Tron (1982)](https://www.youtube.com/watch?v=3efV2wqEjEY)
+
+Ray Tracing
+---------------------------------------------------------------
+![Figure [Whitted]: Turner Whitted, 1980](whitted.jpg width="300px" border="2")
+
+-  Process of shooting rays into scene and resolving reflections and refractions
+to get pixel colors.
+-  Recursive by nature.
+
+
+Modules
+==============================================================
+
+Nam libero tempore, cum soluta nobis est eligendi optio
+cumque nihil impedit quo minus id quod maxime placeat facere possimus,
+omnis voluptas assumenda est, omnis dolor repellendus.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ rust
+fn main() {
+    let x = 5u32;
+
+    let y = {
+        let x_squared = x * x;
+        let x_cube = x_squared * x;
+
+        // This expression will be assigned to `y`
+        x_cube + x_squared + x
+    };
+
+    let z = {
+        // The semicolon suppresses this expression and `()` is assigned to `z`
+        2 * x;
+    };
+
+    println!("x is {:?}", x);
+    println!("y is {:?}", y);
+    println!("z is {:?}", z);
+}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+<!--
+![`a long code caption a long code caption`](robot.jpg) ![`a long code caption`](robot.jpg) ![`a long code caption`](robot.jpg) ![`a long code caption`](robot.jpg)
+![`a long code caption a long code caption`](robot.jpg) ![`a long code caption`](robot.jpg) ![`a long code caption`](robot.jpg) ![`a long code caption`](robot.jpg)
+-->
+
+See Also
+==============================================================
+
+[Link to nowhere](nowhere).
+
+
+ 
+<style class="fallback">body{visibility:hidden}</style><script>markdeepOptions={tocStyle:'long'};</script>
+<!-- Markdeep: --><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js?" charset="utf-8"></script>
