@@ -1,12 +1,12 @@
-     <meta charset="utf-8" emacsmode="-*- markdown -*-"><link rel="stylesheet" href="https://casual-effects.com/markdeep/latest/slate.css?">
+   <meta charset="utf-8" emacsmode="-*- markdown -*-"> <link rel="stylesheet" href="https://casual-effects.com/markdeep/latest/journal.css?">
 
-                        **Realistic Image Synthesis**
-                           Fall 1949
+                        **CS295: Realistic Image Synthesis (Spring 2019)**
+                           Author: Kai Yan
 
 
 ![Figure [squid]: A picture of a squid](placeholder.jpg)
 
-Introduction
+Introduction to Ray Tracing
 ==============================================================
 
 Ray Casting
@@ -19,55 +19,266 @@ Ray Casting
 - Nonrecursive, i.e., no interreflections.
 - Movie: [Tron (1982)](https://www.youtube.com/watch?v=3efV2wqEjEY)
 
-Ray Tracing
+Recursive ray tracing
 ---------------------------------------------------------------
 ![Figure [Whitted]: Turner Whitted, 1980](whitted.jpg width="300px" border="2")
 
--  Process of shooting rays into scene and resolving reflections and refractions
-to get pixel colors.
--  Recursive by nature.
+- Process of shooting rays into scene and resolving reflections, refractions and shadows to get pixel colors.
+- Recursive by nature.
+- The reflected color is determined by the intersection of the reflected rays with objects in the scene.
+- A refracted ray is created similarly to reflected rays except its direction is into the object and can eventually exit the object. 
+- The shadow is computed by creating shadow rays which originates from the intersection to all lights. If the shadow ray intersects an object before it reaches the light, then that intersection point is shadowed from that particular light.
+- Advantage: realitic rendering of reflections, refractions and shadows.
+- Disadvantage: Heavy computational requirement. (Caustics)
 
+Later works
+---------------------------------------------------------------
 
-Modules
+![Figure [Whitted]: Distribution Ray Tracing (1984)](1.jpg width=200) ![Figure [Whitted]: Radiosity method, 1980](2.jpg width=200)
+
+![Figure [Whitted]: Hierarchical radiosity, 1980](3.jpg width=200) ![Figure [Whitted]: Discontinuity meshing, 1980](4.jpg width=200)
+
+![Figure [Whitted]: Nondiffuse radiosity, 1991](5.jpg width=200) ![Figure [Whitted]: RenderMan shading language, 1992](6.jpg width=200)
+
+![Figure [Whitted]: The Rendering Equation; path tracing, 1986](7.jpg width=200) ![Figure [Whitted]: Bidirectional path tracing, 1993](8.jpg width=200)
+
+![Figure [Whitted]: Markov Chain Monte Carlo (Metropolis Light Transport), 1997](9.jpg width=200) ![Figure [Whitted]: Primary sample space MCMC, 2002](10.jpg width=200)
+
+![Figure [Whitted]: “Energy Redistribution” with non-ergodic MCMC, 2005](11.jpg width=200) ![Figure [Whitted]: Manifold Exploration, 2012](12.jpg width=200)
+
+![Figure [Whitted]: Gradient Domain Path Tracing, 2015](13.jpg width=200) ![Figure [Whitted]: Photon Mapping, 1996](14.jpg width=200)
+
+![Figure [Whitted]: Photon Mapping, 1996](15.jpg width=200) ![Figure [Whitted]: Virtual point lights (Instant Radiosity), 1997](16.jpg width=200)
+
+![Figure [Whitted]: LightCuts, 2005](17.jpg width=200) ![Figure [Whitted]: Volume scattering, 1982](18.jpg width=200)
+
+![Figure [Whitted]: Volumetric photon mapping, 1998](19.jpg width=200) ![Figure [Whitted]: Beam Radiance Estimate, 2008](20.jpg width=200)
+
+![Figure [Whitted]: Unifying Points, Beams, and Paths, 2014](21.jpg width=200) ![Figure [Whitted]: Metropolis in volumes, 2000](22.jpg width=200)
+
+![Figure [Whitted]: Microfacet refection models, 1981](23.jpg width=200) ![Figure [Whitted]: Microfacet transmission model, 2007](24.jpg width=200)
+
+![Figure [Whitted]: Anisotropic volume media, 2010](25.jpg width=200) ![Figure [Whitted]: Diffusion for light transport, 1995](26.jpg width=200)
+
+![Figure [Whitted]: Subsurface scattering, 2001](27.jpg width=200) ![Figure [Whitted]: Advanced diffusion models, 2011](28.jpg width=200)
+
+Radiometry
 ==============================================================
 
-Nam libero tempore, cum soluta nobis est eligendi optio
-cumque nihil impedit quo minus id quod maxime placeat facere possimus,
-omnis voluptas assumenda est, omnis dolor repellendus.
+The Physical Nature of Light
+---------------------------------------------------------------
+![The Electromagnetic Spectrum](2_1.jpg width=300)
+
+- Light is visible electromagnetic radiation
+  - While electromagnetic radiation spans from microwaves on the long-wave, low photon energy side of the spectrum to short-wave, high energy gamma rays on the other side, the visible portion of the spectrum spans less than an order of magnitude in wavelength, from about 400 to 700 nanometers.
+
+- The behavior of real electromagnetic waves has some nuances, including the following:
+  - Polarization
+    - In reality, an electromagnetic wave can be considered as the sum of several polarized components, where the electric and magnetic fields of each component are aligned in a different way. Reflections and certain types of materials may affect the polarization of light and/or may only admit light of a certain polarization
+
+  - Quantization
+   - Real electromagnetic waves have a ”dual wave-particle” nature, where it behaves like a quantized particle in some respects and like a wave in others. On the particle side, light behaves as a set of packets called photons; as such, light is not a truly continuous stream of energy but is rather a stream of discrete photons.
+
+  - Wave Nature of Light
+    - On the other hand, electromagnetic waves also have a wave nature (hence their name). A wave passing through an aperture will produce a diffraction pattern instead of carrying energy uniformly. Multiple waves in through the same space will interfere with each other. This occurs despite the quantization of photons–in fact, even a single photon will interfere with itself! More subtly, there is no such thing as a perfectly collimated beam; even laser beams spread out slowly with distance
+
+- At beginning, we can typically ignore these factors, since they are not usually noticable to the naked eye. Instead, we treat light waves as simple, continuous, independent streams of energy, and rays as perfectly collimated, infinitesimally narrow beams of energy.
+
+Geometric Optics
+---------------------------------------------------------------
+Radiometry is a system for describing the flow of radiant energy through space. It is essentially a geometric topic—all the subtleties have to do with geometry, **not the physics of light at all**.
+
+Assumptions:
+- visible light: e.g. RGB value
+- incoherent light: no interference
+- [unpolarized light](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-007-electromagnetic-energy-from-motors-to-lasers-spring-2011/lecture-notes/MIT6_007S11_lec24.pdf)
+- macroscopic scale (low energy physics or high energy physics?)
+
+Mathematical Background
+---------------------------------------------------------------
+
+![Hemisphere](2_2.jpg width=300)
+
+$$ \theta \in [0, \pi/2] $$
+$$ \phi \in [0, 2\pi] $$
+
+- Hemispheres
+  - Hemisphere = 2D surface
+  - Direction = point on (unit) sphere
+
+![Angles and Solid Angles](2_3.jpg width=600)
+
+- Solid Angles
+  - For angles and arcs, θ = l/r where θ is the angle, l is the arc length, and r is the radius of the circle.
+    - Since a circle has a circumference of 2πr, there are 2π radians in a circle.
+    - Technically the radian is dimensionless; however, it is often convenient to carry the label around in order to make sure your answer has the proper dimensions.
+  - In radiometry, we are interested in **solid angles**.
+    - A solid angle is to a ”normal” angle as a piece of sky is to a slice of pie; it is like an angle, but one dimension higher.
+    - Measured in steradians, dimensionless like radians.
+    - Ω = A/r^2
+    - where Ω is the solid angle, A is the area, and r is the radius of the sphere.
+    - A sphere has a surface area of 4πr^2 , there are 4π steradians in a sphere.
+
+- Spherical Coordinates
+
+![Spherical Coordinates](2_4.jpg width=300)
+
+- Spherical Coordinates
+  - Now we can specify how large a solid angle is, but how do we specify where a solid angle is? The answer is spherical coordinates.
+  - **φ**: The first is the azimuthal angle, typically denoted by **φ**, describes the direction’s angle about the z axis, where the positive x direction is at zero angle and the positive y direction is at an angle of π/2. In terms of geography, this corresponds to longitude
+  - **θ**: The second is the angle of elevation, typically denotes by **θ**; this is the angle between the direction and the positive z direction. This corresponds to 90 degrees minus the latitude, since the zero is at the north pole and the angle increases toward the south pole, rather than starting at the equator and increasing toward the north pole.
+  - **r**: We use the radius r to describe the distance from the origin.
+
+- Cartesian Coordinates vs Spherical Coordinates
+$$ x = r \sin \theta \cos \phi \space\space\space\space\space\space \phi = \arctan \frac{y}{x}$$
+$$ y = r \sin \theta \sin \phi \space\space\space\space\space\space \theta = \arctan \frac{\sqrt{x^2+y^2}}{z}$$
+$$ z = r \cos \phi \space\space\space\space\space\space r = \sqrt{x^2+y^2+z^2}$$
+
+- Differential Solid Angles
+
+$$ dA = (r \space d\theta)(r\sin\theta \space d\phi) = r^2\sin\theta \space d\theta \space d\phi $$
+$$ d\omega = \frac{dA}{r^2}=\sin\theta \space d\theta \space d\phi $$
+
+- Example: solid angle of sphere
+$$ \int_\Omega d\omega = ? $$
+
+With this mathematical background in place, we can move on to a discussion of radiometry. Radiometry is the physical measurement of electromagnetic energy. We will begin with radiance and irradiance, which describe the flow of electromagnetic energy, then move on to reflection functions, which describe how a surface reflects incident electromagnetic energy.
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ rust
-fn main() {
-    let x = 5u32;
+Radiance
+---------------------------------------------------------------
 
-    let y = {
-        let x_squared = x * x;
-        let x_cube = x_squared * x;
+![Radiance](2_5.jpg width=150)
 
-        // This expression will be assigned to `y`
-        x_cube + x_squared + x
-    };
+Radiance: Power per unit projected area perpendicular to the ray per unit solid angle in the direction of the ray. It is generally denoted by the symbol L, being a function of position and solid angle. 
 
-    let z = {
-        // The semicolon suppresses this expression and `()` is assigned to `z`
-        2 * x;
-    };
+- Symbol for radiance: $$ L(\vec x, \omega) $$
+- Intuitively, the radiance describes the electromagnetic power coming from a particular direction at a given point.
+- Since we typically treat rays as perfectly collimated beams of energy, the radiance is constant along a ray.
+- Flux (power per unit area): $$ d \Phi = L(\vec x, \omega)\cos\theta\space d\omega\space dA $$
+- Radiant energy at _**x**_ to _**ω**_:
+  - A 5D function L(_**x**_, _**ω**_): Power
+    - per projected surface area
+    - per solid angle
 
-    println!("x is {:?}", x);
-    println!("y is {:?}", y);
-    println!("z is {:?}", z);
-}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+![Radiance](2_6.jpg width=150)
 
-<!--
-![`a long code caption a long code caption`](robot.jpg) ![`a long code caption`](robot.jpg) ![`a long code caption`](robot.jpg) ![`a long code caption`](robot.jpg)
-![`a long code caption a long code caption`](robot.jpg) ![`a long code caption`](robot.jpg) ![`a long code caption`](robot.jpg) ![`a long code caption`](robot.jpg)
--->
+$$ L(x, \omega) = \frac{d^2\phi}{dA^\bot\space d\omega} $$
 
-See Also
+- Radiance constant as propagates along ray (Invariant)
+  - Derived from conservation of flux.
+  - Fundamental in Light Transport. 
+
+Why radiance important?
+
+- Response of a sensor (camera, human eye) is proportional to radiance.
+- Pixel values in image proportional to radiance received from that direction.
+
+Irradiance & Radiosity
+---------------------------------------------------------------
+$$ E = \frac{d\Phi}{dA} $$
+
+$$ I = \frac{d\Phi}{d\omega} $$
+
+Irradiance E is radiant power per unit area (dΦ/dA)
+
+Intensity I is radiant power per unit solid angle (dΦ/dω)
+
+Radiant Exitance (radiosity) Power per unit area leaving surface (like irradiance)
+
+Relationship
+---------------------------------------------------------------
+
+Power: $$ \Phi = \int \int L(x, \omega)\cos\theta ~\d{\omega} ~\d{A} $$
+
+Irradiance/radiosity: $$ E = \frac{d\Phi}{dA} = \int_{H^2} L(x, \omega)\cos\theta ~\d{\omega} $$
+
+Types of Reflection Functions
+---------------------------------------------------------------
+
+Ideal Specular
+
+- Reflection Law
+- Mirror
+
+Ideal Diffuse
+
+- Lambert's Law
+- Matte
+
+Specular
+
+- Glossy
+- Directional diffuse
+
+Example: Diffuse Emitter
+
+- Diffuse emitter: light source with equal radiance (L) everywhere
+$$ \Phi = \int \int L(x, \omega)\cos\theta ~\d{\omega} ~\d{A} = L \cdot area \cdot \pi $$
+
+BRDFs
 ==============================================================
 
-[Link to nowhere](nowhere).
+- Bi-Directional Reflectance Distribution Function [Nicodemus 77]
+- Function based on incident, view direction
+- Relates incoming light energy to outgoing
+- Unifying framework for many materials
+
+![Bidirectional Reflectance Distribution Functions (BRDFs)](3_1.jpg width=300)
+
+Since we are concerned with the rendering of surfaces, we are concerned with how surfaces reflect light energy. One way of representing this is though a bidirectional reflectance distribution functions (BRDF). The BRDF operates as follows. Given:
+
+- A point on a surface.
+- An incident direction of light.
+- A reflected direction of interest.
+
+The BRDF describes how much radiance is reflected in the direction of interest per unit of power falling on a unit area (including the obliquity factor) from the incident direction. The BRDF is defined as the reflected radiance reflected direction divided by the irradiance coming from the incident direction:$$ f(x, \omega_i → \omega_r) := \frac{\d{L_r(x, \omega_r)}}{L_i(x, \omega_i) \cos \theta_i \d{\omega_i}} $$ Since the projected solid angle is only applied to the incident term, the BRDF has units of inverse
+steradians.
+
+Properties of BRDFs
+---------------------------------------------------------------
+BRDFs can have several properties, which may reflect the physical properties of light, or may make them easier to store and calculate.
+
+- Linearity: There are two properties of linearity here. The first is the property that the light reflected from a surface from two incident light distributions together is the same as the sum of the light reflected from the two incident light distributions separately. This allows us to treat rays as separate and independent, and simply sum the results afterwards. The second property of linearity is that a BRDF can be split up into the sum of several components; the total reflected light is the sum of the light reflected by each component. Linearity is implicit in our use of the BRDFs; thus all BRDFs have this property.
+
+- Reciprocity Principle: $$ f_r(ω_r \rightarrow ω_i) = f_r(ω_i \rightarrow ω_r) $$
+  - Therefore “bidirectional”! $$ f_r(ω_r \leftrightarrow ω_i) \ge 0 $$
+  - Nonnegativity
+
+- Isotropic vs. Anisotropic: The reflectance of most materials can be considered as isotropic; that is, f’s dependence on φ only depends on the difference between φi and φr. Combined with reciprocity, f’s dependence on φ only depends on absolute value of this difference. However, not all materials have isotropic reflectance; for example, brushed aluminum’s appearance depends on the azimuthal viewing angle.
+
+- Energy Conservation: Physically, a surface cannot reflect more light than falls on it; that is, the radiant exitance cannot exceed the irradiance.$$ \int_{\Omega^+} f_r(x, \omega_r \leftrightarrow \omega_i) \cos\theta \space \d{\omega} \le 1 $$
+$$ \frac{d\Phi_r}{\d\Phi_i} \le 1$$
+
+
+The Reflection Equation
+---------------------------------------------------------------
+The linearity of the BRDF allows to express the total light reflected from a surface as the sum (or integral) of the contributions of the reflections of several lights. This gives rise to the reflection equation for point lights:
+$$ L_r(\omega_r) = \sum_i L_i(\omega_i)f(\omega_i \rightarrow \omega_r) \cos\theta_i$$
+For continuous lights:
+$$ L_r(\omega_r) = \int_\Omega L_i(\omega_i)f(\omega_i \rightarrow \omega_r) \cos\theta_i \space \d{\omega_i}$$
+
+Reflection Functions
+---------------------------------------------------------------
+
+### Simple Functions, The Phong Model
+
+### Fresnel Reflectance
+
+### The Torrance-Sparrow Model
+
+### Other BRDF models
+
+Direct Illumination
+==============================================================
+
+Monte Carlo Integration
+==============================================================
+
+Sampling from PDFs
+==============================================================
+
+
 
 
  
