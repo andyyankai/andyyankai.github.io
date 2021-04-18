@@ -2,18 +2,17 @@
   <div id="about">
     <Transition name="fade-transform" mode="out-in">
       <div class="page" v-if="about">
-        <Quote :quote="$config.aboutOpts.qoute" />
         <div class="content">
           <div class="header">
             <img :src="$config.aboutOpts.avatar" alt />
             <div class="info">
               <span>
                 <i class="icon icon-fort-awesome"></i>
-                {{ $config.title }}
+                {{ $config.aboutOpts.name }}
               </span>
               <span>
                 <i class="icon icon-pagelines"></i>
-                {{ $config.subtitle }}
+                {{ $config.aboutOpts.email }}
               </span>
               <span>
                 <i class="icon icon-graduation-cap"></i>
@@ -52,7 +51,6 @@
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
 import Comment from '@/components/Comment'
-import Quote from '@/components/Quote'
 import Segment from '@/components/Segment'
 import { shuffle } from '@/utils'
 
@@ -62,7 +60,6 @@ export default {
     MarkDown,
     Loading,
     Comment,
-    Quote,
     Segment,
   },
   data() {

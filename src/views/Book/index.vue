@@ -2,7 +2,6 @@
   <div id="book">
     <Transition name="fade-transform" mode="out-in">
       <div class="page" v-if="book.length">
-        <Quote :quote="$config.bookOpts.qoute" />
         <ul class="content">
           <li v-for="item in book" :key="item.name">
             <div class="info">
@@ -13,21 +12,20 @@
               </a>
               <div>
                 <h3>{{ item.name }}</h3>
-                <p>作者：{{ item.author }}</p>
-                <p>出版时间：{{ item.published }}</p>
-                <p>阅读进度：{{ item.progress }}</p>
+                <p>Authors：{{ item.author }}</p>
+                <p>Publish：{{ item.published }}</p>
                 <p>
-                  <span>读书笔记：</span>
+                  <span>PDF：</span>
                   <a v-if="item.postLink" :href="item.postLink" target="_blank" rel="noopener noreferrer">
                     {{ item.postTitle }}
                   </a>
-                  <span v-else>暂无</span>
+                  <!-- <span v-else>暂无</span> -->
                 </p>
-                <p>
+<!--                 <p>
                   <span>推荐指数：</span>
                   <span></span>
                   <i class="icon icon-star" v-for="i in parseInt(item.rating)" :key="`star-${i}`"></i>
-                </p>
+                </p> -->
               </div>
             </div>
             <p class="description">{{ item.description }}</p>
@@ -37,20 +35,18 @@
       <Loading v-else />
     </Transition>
 
-    <Comment v-if="$config.bookOpts.enableComment && initComment" title="书单" />
+    <Comment v-if="$config.bookOpts.enableComment && initComment" title="论文" />
   </div>
 </template>
 
 <script>
 import Loading from '@/components/Loading'
-import Quote from '@/components/Quote'
 import Comment from '@/components/Comment'
 
 export default {
   name: 'Book',
   components: {
     Loading,
-    Quote,
     Comment,
   },
   data() {

@@ -2,7 +2,6 @@
   <div id="category">
     <Transition name="fade-transform" mode="out-in">
       <div class="page" v-if="category.length">
-        <Quote :quote="$config.categoryOpts.qoute" />
         <Transition name="fade-transform" mode="out-in">
           <div v-if="posts.length">
             <div class="clean">
@@ -45,7 +44,6 @@
 
 <script>
 import Loading from '@/components/Loading'
-import Quote from '@/components/Quote'
 import ArchiveCard from '@/components/ArchiveCard'
 import Comment from '@/components/Comment'
 
@@ -53,7 +51,6 @@ export default {
   name: 'Category',
   components: {
     Loading,
-    Quote,
     ArchiveCard,
     Comment,
   },

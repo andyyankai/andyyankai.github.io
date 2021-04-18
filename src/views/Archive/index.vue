@@ -2,7 +2,6 @@
   <div id="archive">
     <Transition name="fade-transform" mode="out-in">
       <div class="page" v-if="posts.length">
-        <Quote :quote="$config.archiveOpts.qoute" />
         <ArchiveCard
           :posts="posts"
           :times="times"
@@ -22,7 +21,6 @@
 <script>
 import { mapState } from 'vuex'
 import Loading from '@/components/Loading'
-import Quote from '@/components/Quote'
 import ArchiveCard from '@/components/ArchiveCard'
 import Comment from '@/components/Comment'
 
@@ -30,7 +28,6 @@ export default {
   name: 'Archive',
   components: {
     Loading,
-    Quote,
     ArchiveCard,
     Comment,
   },

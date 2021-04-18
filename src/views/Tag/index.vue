@@ -2,7 +2,6 @@
   <div id="tag">
     <Transition name="fade-transform" mode="out-in">
       <div class="page" v-if="tag.length">
-        <Quote :quote="$config.tagOpts.qoute" />
         <Transition name="fade-transform" mode="out-in">
           <div v-if="posts.length">
             <div class="clean">
@@ -38,7 +37,6 @@
 
 <script>
 import Loading from '@/components/Loading'
-import Quote from '@/components/Quote'
 import ArchiveCard from '@/components/ArchiveCard'
 import Comment from '@/components/Comment'
 
@@ -46,7 +44,6 @@ export default {
   name: 'Tag',
   components: {
     Loading,
-    Quote,
     ArchiveCard,
     Comment,
   },

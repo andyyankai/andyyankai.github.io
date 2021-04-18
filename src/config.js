@@ -14,35 +14,34 @@ export default {
   /**
    * 站点标题
    */
-  title: '蝉時雨',
-  subtitle: '蝉鸣如雨 花宵道中',
+  title: '開ちゃん',
+  subtitle: '戚颜 开晦',
 
   /**
    * Github Issues 配置
    */
-  username: 'chanshiyucx', // github 用户名
+  username: 'andyyankai', // github 用户名
   repository: 'blog', // 文章仓库地址
-  token: ['0ad1a0539c5b96fd18fa', 'aaafba9c7d1362a5746c'], // token 从中间任意位置拆开成两部分，避免 github 代码检测失效
+  token: ['ghp_wakqTiaIVoGZky1', 'Kk5AyVxriAirpV04MPZXO'], // token 从中间任意位置拆开成两部分，避免 github 代码检测失效
 
   /**
    * Gitalk 配置，文档详见：https://github.com/gitalk/gitalk
    */
   gitalk: {
-    clientID: '864b1c2cbc4e4aad9ed8',
-    clientSecret: '6ca16373efa03347e11a96ff92e355c5cea189bb',
+    clientID: '1460bd6cf7e5bcb78030',
+    clientSecret: '7c8d3a86245cf4e65d745ae8fe69ee1a2749bbe9',
     repo: 'comment', // 评论仓库地址
-    owner: 'chanshiyucx',
-    admin: ['chanshiyucx'],
+    owner: 'andyyankai',
+    admin: ['andyyankai'],
     distractionFreeMode: false, // 是否开始无干扰模式【背景遮罩】
-    proxy: 'https://bokegitalkcors.herokuapp.com/https://github.com/login/oauth/access_token',
   },
 
   /**
    * leancloud 配置 【注意切换为国际版】
    */
   leancloud: {
-    appId: 'LjOwR4ELEqbauKvtQbwq5TUw-MdYXbMMI',
-    appKey: 'BOSFJ49ohbGctgn4zvJE9VN6',
+    appId: 'sV0BYOHMuoqP7txxxtj6SbEW-MdYXbMMI',
+    appKey: 'iFN3sAbIxmhVlhdYrSC4T2Cm',
   },
 
   /**
@@ -83,7 +82,7 @@ export default {
    */
   inspirationOpts: {
     display: true,
-    enableComment: true,
+    enableComment: false,
     qoute: '詠奏妖華，明鏡止水',
   },
 
@@ -92,7 +91,7 @@ export default {
    */
   bookOpts: {
     display: true,
-    enableComment: true,
+    enableComment: false,
     qoute: '追想風景 彼岸帰航',
   },
 
@@ -101,8 +100,8 @@ export default {
    */
   friendOpts: {
     display: true,
-    enableComment: true,
-    qoute: '青青子衿，悠悠我心',
+    enableComment: false,
+    qoute: 'Osmanthus wine tastes the same as I remember... But where are those who share the memory?',
   },
 
   /**
@@ -110,31 +109,33 @@ export default {
    */
   aboutOpts: {
     display: true,
-    enableComment: true,
+    enableComment: false,
     qoute: '蝉鸣如雨，花宵道中',
-    avatar: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/avatar.jpg',
-    graduated: 'University of Electronic Science and Technology of China (UESTC)',
-    college: 'Communication&Information Engineering',
+    name: 'Kai Yan',
+    avatar: '//cdn.jsdelivr.net/gh/andyyankai/catbox@latest/genshin/qiqi.jpg',
+    graduated: 'University of California, Irvine',
+    college: 'Computer Science, Ph.D.',
+    email: 'kyan8@uci.edu',
     contact: [
       {
         icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/email.png',
-        link: 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=tNnR9Nfc1drH3N3NwZrX29k',
+        link: 'https://mail.google.com/mail/?view=cm&fs=1&to=kyan8@uci.edu',
       },
       {
         icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/github.png',
-        link: 'https://github.com/chanshiyucx',
+        link: 'https://github.com/andyyankai',
       },
       {
         icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/music.png',
-        link: 'https://music.163.com/#/user/home?id=103060582',
+        link: 'https://music.163.com/#/user/home?id=388884604',
       },
       {
         icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/telegram.png',
-        link: 'https://t.me/chan_shi_yu',
+        link: 'https://t.me/loliwarder',
       },
       {
         icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/twitter.png',
-        link: 'https://twitter.com/chanshiyucx',
+        link: 'https://twitter.com/andyyankai',
       },
       // {
       //   icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/rsshub.png',
@@ -152,24 +153,24 @@ export default {
   /**
    * 加载动画
    */
-  loadingImg: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/loading.gif',
+  loadingImg: '//cdn.jsdelivr.net/gh/andyyankai/catbox@latest/blog/loading.gif',
 
   /**
    * 文章默认图
    */
-  defaultCover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/bg/defaultCover.jpg',
+  defaultCover: '//cdn.jsdelivr.net/gh/andyyankai/catbox@latest/genshin/default.jpg',
 
   /**
    * 赛钱箱
    */
   qrcode: [
     {
-      name: '支付宝',
-      img: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/zfb.png',
+      name: 'Alipay',
+      img: '//cdn.jsdelivr.net/gh/andyyankai/catbox@latest/qrcode/zfb.jpg',
     },
     {
-      name: '微信',
-      img: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/wx.png',
+      name: 'Wechat',
+      img: '//cdn.jsdelivr.net/gh/andyyankai/catbox@latest/qrcode/wxp.jpg',
     },
   ],
 

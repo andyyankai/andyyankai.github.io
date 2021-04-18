@@ -2,7 +2,6 @@
   <div id="inspiration">
     <Transition name="fade-transform" mode="out-in">
       <div class="page" v-if="inspiration.length">
-        <Quote :quote="$config.inspirationOpts.qoute" />
         <div class="content">
           <Segment v-for="(item, i) in inspiration" :key="item.number" :title="item.date" :color="colors[i]">
             <MarkDown :content="item.body" />
@@ -28,7 +27,6 @@
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
 import Pagination from '@/components/Pagination'
-import Quote from '@/components/Quote'
 import Segment from '@/components/Segment'
 import Comment from '@/components/Comment'
 import { shuffle } from '@/utils'
@@ -39,7 +37,6 @@ export default {
     MarkDown,
     Loading,
     Pagination,
-    Quote,
     Segment,
     Comment,
   },

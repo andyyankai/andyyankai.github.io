@@ -1,8 +1,8 @@
 {
-  "name": "aurora",
-  "version": "2.0.0",
-  "description": "An awesome blog theme",
-  "author": "蝉時雨 <me@chanshiyu.com>",
+  "name": "loliwarder",
+  "version": "1.0.0",
+  "description": "loliwarder blog theme",
+  "author": "loliwarder <kyan8@uci.edu>",
   "license": "MIT",
   "scripts": {
     "start": "npm run serve",
