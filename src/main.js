@@ -59,19 +59,19 @@ new Vue({
 }).$mount('#app')
 
 // (o=^•ェ•)o
-// const labelStyle = 'line-height:22px;color:#FFF;background:#D68FE9;'
-// const themeRepo = 'https://github.com/andyyankai/aurora'
-// console.info(`%c ${config.title} %c`, labelStyle, '', window.location.origin)
-// console.info('%c Theme %c', labelStyle, '', themeRepo)
-// console.info('~❀~ 发现控制台报错请务必联系博主 ~❀~')
-// console.log(
-//   '%c ',
-//   `
-//   margin:5px 0;
-//   padding:0 0 162px 200px;
-//   overflow:hidden;
-//   border-radius:10px;
-//   background:url(${images.reimu}) no-repeat center;
-//   background-size:200px;
-//   `
-// )
+const labelStyle = 'line-height:22px;color:#FFF;background:#D68FE9;'
+const themeRepo = 'https://github.com/chanshiyucx/aurora'
+console.info(`%c ${config.title} %c`, labelStyle, '', window.location.origin)
+console.info('%c Theme %c', labelStyle, '', themeRepo)
+console.info('~❀~ 发现控制台报错请务必联系博主 ~❀~')
+console.log(
+  '%c ',
+  `
+  margin:5px 0;
+  padding:0 0 162px 200px;
+  overflow:hidden;
+  border-radius:10px;
+  background:url(${images.reimu}) no-repeat center;
+  background-size:200px;
+  `
+)
