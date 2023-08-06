@@ -22,12 +22,12 @@
             <i class="icon icon-emo-devil"></i>
           </div>
         </div>
-        <APlayer :class="isMini && 'mini'" :audio="audio" preload="none" fixed mini @update:mini="handleUpdate" />
+        <!-- <APlayer :class="isMini && 'mini'" :audio="audio" preload="none" fixed mini @update:mini="handleUpdate" /> -->
       </div>
     </div>
     <div class="site-info">
       <p>
-        <i class="icon icon-copyright"></i>2020-2021
+        <i class="icon icon-copyright"></i>1998-2023
         <i class="icon icon-heart"></i>
         {{ $config.title }}
       </p>
@@ -65,7 +65,7 @@ export default {
   data() {
     return {
       sakura,
-      showWaifu: true,
+      showWaifu: false,
       waifu: 'tia',
       menu: [
         { icon: 'venus-double', type: 'switch' },

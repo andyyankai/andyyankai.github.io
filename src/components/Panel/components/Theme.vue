@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     switchTheme(theme) {
-      this.$emit('switchTheme', theme)
+      // this.$emit('switchTheme', theme)
     },
   },
 }

@@ -3,6 +3,7 @@
     <Transition name="fade-transform" mode="out-in">
       <div v-if="posts.length">
         <div class="content">
+
           <article
             class="cursor"
             data-aos="fade-up"
@@ -30,10 +31,6 @@
                 <span>
                   <i class="icon icon-calendar"></i>
                   {{ post.created_at }}
-                </span>
-                <span>
-                  <i class="icon icon-fire"></i>
-                  热度{{ times[post.id] || 1 }}℃
                 </span>
                 <span>
                   <i class="icon icon-bookmark-empty"></i>
@@ -136,6 +133,9 @@ export default {
         page: queryPage,
         pageSize: this.pageSize,
       })
+
+      // console.log(posts);
+
       this.loading = false
 
       this.scrollTop(() => {
@@ -143,10 +143,14 @@ export default {
         this.list[queryPage] = posts
       })
 
+      // console.log(posts);
+
       // 获取文章热度
-      const ids = posts.map((o) => o.id)
-      const hot = await this.$store.dispatch('queryHot', { ids })
-      this.times = { ...this.times, ...hot }
+      // const ids = posts.map((o) => o.id)
+      // const hot = await this.$store.dispatch('queryHot', { ids })
+      // this.times = { ...this.times, ...hot }
+
+      // console.log(posts);
     },
     // 滚动到顶部
     scrollTop(cb) {
@@ -161,12 +165,14 @@ export default {
     },
     // 看板娘
     showTips(post) {
-      const tips = `要去看看<span style="color: #b854d4"> ${post.title} </span>吗？`
-      this.$store.dispatch('showTips', { tips })
+     const tips = `要去看看<span style="color: #b854d4"> ${post.title} </span>吗？`
+     this.$store.dispatch('showTips', { tips })
     },
   },
 }
+
 </script>
+
 
 <style lang="scss" scope>
 @import './index.scss';

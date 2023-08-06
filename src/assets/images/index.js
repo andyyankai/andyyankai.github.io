@@ -1,6 +1,6 @@
 export default {
   sakura: 'https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/sakura.png',
-  reimu: 'https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/reimu.png',
+  reimu: 'https://cdn.jsdelivr.net/gh/andyyankai/catbox/fate/illya.png',
   preview: {
     touhou: 'https://cdn.jsdelivr.net/gh/andyyankai/catbox/genshin/front.jpg',
     school: 'https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/school.jpg',

@@ -14,10 +14,10 @@
                 <i class="icon icon-calendar"></i>
                 {{ post.created_at }}
               </span>
-              <span>
+<!--               <span>
                 <i class="icon icon-fire"></i>
                 热度{{ post.times || 1 }}℃
-              </span>
+              </span> -->
               <span>
                 <i class="icon icon-bookmark-empty"></i>
                 {{ post.milestone ? post.milestone.title : '未分类' }}
@@ -69,7 +69,7 @@ export default {
     }
     this.$nextTick(() => {
       this.queryHot()
-      this.initComment = true
+      this.initComment = false
     })
   },
   methods: {

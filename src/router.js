@@ -15,7 +15,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: Home,
     },
@@ -45,18 +45,24 @@ export default new Router({
       component: Inspiration,
     },
     {
-      path: '/book',
-      name: 'book',
+      path: '/publication',
+      name: 'publication',
       component: Book,
     },
-    {
-      path: '/friend',
-      name: 'friend',
-      component: Friend,
-    },
+    // {
+    //   path: '/friend',
+    //   name: 'friend',
+    //   component: Friend,
+    // },
     {
       path: '/about',
       name: 'about',
+      component: About,
+    },
+
+    {
+      path: '/',
+      name: '',
       component: About,
     },
   ],

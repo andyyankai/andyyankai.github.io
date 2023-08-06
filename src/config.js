@@ -15,7 +15,7 @@ export default {
    * 站点标题
    */
   title: '開ちゃん',
-  subtitle: '戚颜 开晦',
+  subtitle: 'Kai Yan',
 
   /**
    * Github Issues 配置
@@ -54,7 +54,7 @@ export default {
    * 归档页面
    */
   archiveOpts: {
-    display: true, // 是否显示该页面
+    display: false, // 是否显示该页面
     enableComment: false, // 是否开启评论功能
     qoute: '華枝春滿 天心月圓', // 页面顶部一言
   },
@@ -63,7 +63,7 @@ export default {
    * 分类页面
    */
   categoryOpts: {
-    display: true,
+    display: false,
     enableComment: false,
     qoute: '桜華月想 暮色蒼然',
   },
@@ -72,7 +72,7 @@ export default {
    * 标签配置
    */
   tagOpts: {
-    display: true,
+    display: false,
     enableComment: false,
     qoute: '灯笼流丽，百鬼夜行',
   },
@@ -81,7 +81,7 @@ export default {
    * 灵感页面
    */
   inspirationOpts: {
-    display: true,
+    display: false,
     enableComment: false,
     qoute: '詠奏妖華，明鏡止水',
   },
@@ -99,7 +99,7 @@ export default {
    * 友链页面
    */
   friendOpts: {
-    display: true,
+    display: false,
     enableComment: false,
     qoute: 'Osmanthus wine tastes the same as I remember... But where are those who share the memory?',
   },
@@ -110,11 +110,11 @@ export default {
   aboutOpts: {
     display: true,
     enableComment: false,
-    qoute: '蝉鸣如雨，花宵道中',
+    qoute: 'Kai Yan',
     name: 'Kai Yan',
-    avatar: '//cdn.jsdelivr.net/gh/andyyankai/catbox@latest/genshin/qiqi.jpg',
+    avatar: '//cdn.jsdelivr.net/gh/andyyankai/catbox/pro.jpg',
     graduated: 'University of California, Irvine',
-    college: 'Computer Science, Ph.D.',
+    college: 'Computer Science, 3rd Year Ph.D. Advised by Shuang Zhao',
     email: 'kyan8@uci.edu',
     contact: [
       {
@@ -125,18 +125,18 @@ export default {
         icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/github.png',
         link: 'https://github.com/andyyankai',
       },
-      {
-        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/music.png',
-        link: 'https://music.163.com/#/user/home?id=388884604',
-      },
+      // {
+      //   icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/music.png',
+      //   link: 'https://music.163.com/#/user/home?id=388884604',
+      // },
       {
         icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/telegram.png',
         link: 'https://t.me/loliwarder',
       },
-      {
-        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/twitter.png',
-        link: 'https://twitter.com/andyyankai',
-      },
+      // {
+      //   icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/twitter.png',
+      //   link: 'https://twitter.com/andyyankai',
+      // },
       // {
       //   icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/rsshub.png',
       //   link: 'https://rsshub.app/github/issue/chanshiyucx/blog',
@@ -153,7 +153,7 @@ export default {
   /**
    * 加载动画
    */
-  loadingImg: '//cdn.jsdelivr.net/gh/andyyankai/catbox@latest/blog/loading.gif',
+  loadingImg: '//cdn.jsdelivr.net/gh/andyyankai/catbox@latest/blog/loading3.gif',
 
   /**
    * 文章默认图

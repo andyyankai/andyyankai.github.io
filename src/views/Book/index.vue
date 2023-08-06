@@ -13,18 +13,16 @@
               <div>
                 <h3>{{ item.name }}</h3>
                 <p>Authors：{{ item.author }}</p>
-                <p>Publish：{{ item.published }}</p>
+                <p v-if="item.published" >Publish：{{ item.published }}</p>
+                <p v-if="item.system" >System：{{ item.system }}</p>
                 <p>
-                  <span>PDF：</span>
-                  <a v-if="item.postLink" :href="item.postLink" target="_blank" rel="noopener noreferrer">
-                    {{ item.postTitle }}
-                  </a>
+                  <!-- <span href="item.link">Link</span> -->
+                  <a v-if="item.link" :href="item.link" target="_blank" rel="noopener noreferrer">
+                    Project Page
+                  </a> 
                   <!-- <span v-else>暂无</span> -->
                 </p>
 <!--                 <p>
-                  <span>推荐指数：</span>
-                  <span></span>
-                  <i class="icon icon-star" v-for="i in parseInt(item.rating)" :key="`star-${i}`"></i>
                 </p> -->
               </div>
             </div>

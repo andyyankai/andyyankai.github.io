@@ -20,7 +20,7 @@ header {
   .title,
   .subtitle {
     font-family: GuDianMingChaoTi;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
     @include pc-layout {
       animation: fadeInDown 0.5s ease-out forwards;
     }
@@ -90,7 +90,7 @@ header {
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
-      width: 50px;
+      width: 150px;
       transition: color 0.3s ease;
 
       @include pc-layout {

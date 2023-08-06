@@ -34,16 +34,8 @@
             <button class="cursor btn right-btn" @click="swiperTo(1)">
               <i class="icon icon-right-open-outline"></i>
             </button>
-            <div class="like">
-              <p>
-                已有
-                <span>{{ likeTimes }}</span> 人点赞了哦！
-              </p>
-            </div>
           </div>
-          <div class="footer">
-            <div class="cursor" :data-title="likeBtnText" @click="likeSite"></div>
-          </div>
+
         </div>
         <div class="long-line">
           <div></div>
